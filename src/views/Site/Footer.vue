@@ -1,7 +1,8 @@
 <template>
-  <v-toolbar-title>
-    {{ title }}
-    <v-btn icon @click="openDialog"><v-icon>mdi-grease-pencil</v-icon></v-btn>
+  <v-footer app color="primary" dark absolute :footer="footer">
+    <v-spacer></v-spacer>
+    <div>&copy; {{ new Date().getFullYear() + ' ' + footer }}</div>
+    <v-btn icon @click="openDialog"><v-icon>mdi-pencil</v-icon></v-btn>
     <v-dialog v-model="dialog" max-width="400">
       <v-card>
         <v-card-title>
@@ -15,15 +16,15 @@
         </v-card-text>
       </v-card>
     </v-dialog>
-  </v-toolbar-title>
+  </v-footer>
 </template>
 <script>
 export default {
-  props: ['title'],
+  props: ['footer'],
   data () {
     return {
       dialog: false,
-      text: this.title
+      text: this.footer
     }
   },
   methods: {
@@ -32,7 +33,9 @@ export default {
     },
     async save () {
       try {
-        await this.$firebase.database().ref().child('site').update({ title: this.text })
+        await this.$firebase.database().ref().child('site').update({ footer: this.text })
+      } catch (e) {
+        console.log(e.message)
       } finally {
         this.dialog = false
       }
