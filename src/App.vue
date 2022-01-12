@@ -4,13 +4,14 @@
       <v-app-bar-nav-icon @click="site.drawer = !site.drawer" />
       <site-title :title ="site.title"></site-title>
       <v-spacer/>
+      <site-sign></site-sign>
     </v-app-bar>
-    <v-navigation-drawer app v-model="site.drawer">
+    <v-navigation-drawer app v-model="site.drawer" width="400">
       <site-menu :items="site.menu"></site-menu>
     </v-navigation-drawer>
-    <v-main>
+    <v-content>
       <router-view/>
-    </v-main>
+    </v-content>
     <site-footer :footer="site.footer"></site-footer>
   </v-app>
 </template>
@@ -19,9 +20,10 @@
 import SiteTitle from '@/views/Site/title'
 import SiteFooter from '@/views/Site/Footer'
 import SiteMenu from '@/views/Site/Menu'
+import SiteSign from '@/views/Site/sign'
 
 export default {
-  components: { SiteTitle, SiteFooter, SiteMenu },
+  components: { SiteTitle, SiteFooter, SiteMenu, SiteSign },
   name: 'App',
   data () {
     return {
