@@ -1,6 +1,8 @@
 {
   "rules": {
-    ".read": "true",  // 2022-2-10
-    ".write": "true",  // 2022-2-10
+    ".read": true,
+    "site": {
+      ".write": "root.child('users').child(auth.uid).chile('level').val() == 0"
+    }
   }
 }
