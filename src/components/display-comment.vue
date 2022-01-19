@@ -18,7 +18,7 @@
       <v-divider :key="i"></v-divider>
     </template>
     <v-list-item>
-      <v-btn @click="more" text color="primary" block>더보기</v-btn>
+      <v-btn @click="more" text color="primary" block>더 보 기</v-btn>
     </v-list-item>
   </v-card>
 </template>
